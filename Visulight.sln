@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visulight", "Visulight\Visulight.csproj", "{A1154A35-4E36-4732-83DD-C0766FB5E8EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulightLibrary", "VisulightLibrary\VisulightLibrary.csproj", "{40A2477E-BB45-4FA7-B609-6D3387D5F33B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulightConsole", "VisulightConsole\VisulightConsole.csproj", "{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A1154A35-4E36-4732-83DD-C0766FB5E8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1154A35-4E36-4732-83DD-C0766FB5E8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1154A35-4E36-4732-83DD-C0766FB5E8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
