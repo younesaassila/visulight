@@ -13,7 +13,7 @@
             }
             set
             {
-                // Raise OnTargetChange event.
+                // TODO: Raise OnTargetChange event.
                 target = value;
             }
         }

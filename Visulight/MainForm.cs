@@ -102,7 +102,7 @@ namespace Visulight
             int i = presetComboBox.SelectedIndex;
             
             presetLabelDistance.Text = $"Distance : { string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:#,##0}", presets[i].distance) } km";
-            
+
             SetSimulation(presets[i].pointAName, presets[i].pointAImage, presets[i].pointAWidth, presets[i].pointAHeight,
                   presets[i].pointBName, presets[i].pointBImage, presets[i].pointBWidth, presets[i].pointBHeight,
                   presets[i].distance, presets[i].lightWidth);

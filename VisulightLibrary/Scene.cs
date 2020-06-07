@@ -39,7 +39,28 @@ namespace VisulightLibrary
             }
         }
 
-        public Photon Photon { get; set; }
+        private Photon photon;
+        /// <summary>
+        /// Object contenant les propriétés du photon.
+        /// Note : Sa largeur ne peut être supérieure à la largeur de l'objet
+        /// céleste le plus petit.
+        /// </summary>
+        public Photon Photon
+        {
+            get
+            {
+                return photon;
+            }
+            set
+            {
+                int smallestObjectWidth = ObjectA.Width < ObjectB.Width ? ObjectA.Width : ObjectB.Width;
+                if (value.Width > smallestObjectWidth)
+                {
+                    value.Width = smallestObjectWidth;
+                }
+                photon = value;
+            }
+        }
 
 
         /// <summary>
@@ -53,41 +74,38 @@ namespace VisulightLibrary
         /// </returns>
         public string GetTimeString()
         {
-            ulong millis = (ulong)(Distance / Photon.Speed * 1000);
-            ulong seconds = millis / 1000;
+            ulong millis, seconds, minutes, hours, days, years;
+
+            millis = (ulong)(Distance / Photon.Speed * 1000);
+
+            seconds = millis / 1000;
             millis -= seconds * 1000;
-            ulong minutes = seconds / 60;
+
+            minutes = seconds / 60;
             seconds -= minutes * 60;
-            ulong hours = minutes / 60;
+
+            hours = minutes / 60;
             minutes -= hours * 60;
-            ulong days = hours / 24;
+
+            days = hours / 24;
             hours -= days * 24;
-            ulong years = days / 365;
+
+            years = days / 365;
             days -= years * 365;
 
-            string yearsString = $"{years:N0} {(years == 1 ? "an" : "ans")}";
-            string daysString = $"{days} jours";
-            string timeString = $"{hours:00}:{minutes:00}:{seconds:00}.{millis:000}";
+            string formattedYears = years > 0 ? $"{years:N0} {(years == 1 ? "an" : "ans")}, " : "";
+            string formattedDays = days > 0 ? $"{days} jours, " : "";
+            string formattedTime = $"{hours:00}:{minutes:00}:{seconds:00}.{millis:000}";
 
-            if (years > 0)
-            {
-                return $"Temps : {yearsString}, {daysString}, {timeString}";
-            }
-            else if (days > 0)
-            {
-                return $"Temps : {daysString}, {timeString}";
-            }
-            else
-            {
-                return $"Temps : {timeString}";
-            }
+            return $"Temps : {formattedYears}{formattedDays}{formattedTime}";
         }
 
         /// <summary>
         /// Récupère la liste des scènes par défaut.
         /// </summary>
         /// <returns>
-        /// Une liste d'objet Scene représentant la liste des scènes par défaut.
+        /// Une liste d'objets de type Scene contenant la liste des scènes
+        /// par défaut.
         /// </returns>
         public static List<Scene> GetDefaultScenes()
         {
