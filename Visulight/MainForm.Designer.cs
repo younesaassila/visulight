@@ -559,9 +559,9 @@
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Visulight";
-			this.Load += new System.EventHandler(this.Form1_Load);
-			this.ResizeBegin += new System.EventHandler(this.Form_ResizeBegin);
-			this.ResizeEnd += new System.EventHandler(this.Form_ResizeEnd);
+			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
+			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
 			this.panelOptions.ResumeLayout(false);
 			this.panelOptions.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.customNumeric)).EndInit();

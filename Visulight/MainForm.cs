@@ -12,71 +12,34 @@ namespace Visulight
 	{
 		private enum LightDirection { PointA, PointB };
 
-		private enum SimulationState { Stopped, Running, Paused }
-
-		private List<Preset> presets = new List<Preset>();
-
 		private Simulation simulation;
 
 		private LightDirection lightDirection = LightDirection.PointB;
 
-		
+		private delegate void UpdatePhotonLocationDelegate(Point location);
+
+
 		public MainForm()
 		{
 			InitializeComponent();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void MainForm_Load(object sender, EventArgs e)
 		{
-			presets = GetDefaultPresets();
+			List<Scene> defaultScenes = Scene.GetDefaultScenes();
 
-			foreach (Preset preset in presets)
+			foreach (Scene scene in defaultScenes)
 			{
-				presetComboBox.Items.Add(preset.name);
+				presetComboBox.Items.Add(scene.Name);
 			}
 
 			presetComboBox.SelectedIndex = 0;
 		}
 
-		private List<Preset> GetDefaultPresets()
+
+		private void MainForm_ResizeBegin(object sender, EventArgs e)
 		{
-			List<Preset> presets = new List<Preset>
-			{
-				new Preset("Terre-Lune",
-				"Terre", Properties.Resources.Earth, 45, 45,
-				"Lune", Properties.Resources.Moon, 16, 16,
-				384_400, 16),
-
-				new Preset("Terre-Satellite géostationnaire",
-				"Terre", Properties.Resources.Earth, 60, 60,
-				"Satellite", Properties.Resources.Satellite, 25, 60,
-				36_000, 25),
-
-				new Preset("Terre-Mars (proche)",
-				"Terre", Properties.Resources.Earth, 17, 17,
-				"Mars", Properties.Resources.Mars, 14, 14,
-				55_700_000, 10),
-
-				new Preset("Terre-Mars (éloigné)",
-				"Terre", Properties.Resources.Earth, 13, 13,
-				"Mars", Properties.Resources.Mars, 10, 10,
-				401_300_000, 7),
-
-				new Preset("Soleil-Terre",
-				"Soleil", Properties.Resources.Sun, 120, 120,
-				"Terre", Properties.Resources.Earth, 8, 8,
-				149_600_000, 5)
-			};
-
-			return presets;
-		}
-
-		private delegate void UpdatePhotonLocationDelegate(Point location);
-
-
-		private void Form_ResizeBegin(object sender, EventArgs e)
-		{
-			if (simulation.state == Simulation.State.RUNNING)
+			if (simulation.State == Simulation.SimState.RUNNING)
 			{
 				simulation.Pause();
 				labelInformation.Text = "Simulation en pause lors du déplacement ou redimensionnement de la fenêtre.";
@@ -84,9 +47,9 @@ namespace Visulight
 			}
 		}
 
-		private void Form_ResizeEnd(object sender, EventArgs e)
+		private void MainForm_ResizeEnd(object sender, EventArgs e)
 		{
-			if (simulation.state == Simulation.State.PAUSED)
+			if (simulation.State == Simulation.SimState.PAUSED)
 			{
 				simulation.Resume();
 			}
@@ -237,7 +200,7 @@ namespace Visulight
 
 
 			// On calcule le temps mis par la lumière du point A au point B
-			ulong timeMillis = (ulong)(distance / Simulation.c * 1000);
+			ulong timeMillis = (ulong)(distance / Simulation.speedOfLight * 1000);
 			
 			// On affiche le temps de déplacement de la lumière entre les deux points
 			SetTimeLabel(timeMillis);
@@ -334,9 +297,9 @@ namespace Visulight
 
 		private void RunSimulation()
 		{
-			while (simulation.state == Simulation.State.RUNNING || simulation.state == Simulation.State.PAUSED)
+			while (simulation.State == Simulation.SimState.RUNNING || simulation.State == Simulation.SimState.PAUSED)
 			{
-				if (simulation.state == Simulation.State.PAUSED)
+				if (simulation.State == Simulation.SimState.PAUSED)
 				{
 					Thread.Sleep(100);
 					continue;
@@ -366,7 +329,7 @@ namespace Visulight
 					newPhotonLocation = lightDirection == LightDirection.PointB ?
 						new Point(pbPointA.Location.X + pbPointA.Width - light.Width, light.Location.Y) :
 						new Point(pbPointB.Location.X, light.Location.Y);
-					simulation.ResetClock();
+					simulation.ResetPhotonDistance();
 					delay = 20;
 				}
 

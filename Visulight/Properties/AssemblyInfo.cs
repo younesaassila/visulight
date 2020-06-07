@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Visulight")]
 [assembly: AssemblyDescription("Visualisez le déplacement de la lumière entre deux points dans l'espace grâce à Visulight.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Yougi3 (https://github.com/Yougi3)")]
+[assembly: AssemblyCompany("Younes Aassila")]
 [assembly: AssemblyProduct("Visulight")]
-[assembly: AssemblyCopyright("Copyright © 2019 Yougi3")]
+[assembly: AssemblyCopyright("Copyright © Younes Aassila 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0")]
-[assembly: AssemblyFileVersion("1.0")]
-[assembly: NeutralResourcesLanguage("")]
+[assembly: AssemblyVersion("2.0.0")]
+[assembly: AssemblyFileVersion("2.0.0")]
+[assembly: NeutralResourcesLanguage("fr-FR")]

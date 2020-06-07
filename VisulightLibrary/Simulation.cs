@@ -1,75 +1,83 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Threading;
 
 namespace VisulightLibrary
 {
 	public class Simulation
 	{
-		// Speed of light in km/s.
-		public const double c = 299_792.458;
+		public enum SimState { STOPPED, RUNNING, PAUSED }
 
-		public enum State { STOPPED, RUNNING, PAUSED }
+		public SimState State { get; private set; } = SimState.STOPPED;
 
-		public State state = State.STOPPED;
+		private Stopwatch Stopwatch { get; set; } = new Stopwatch();
 
-		private Stopwatch stopwatch;
-		// Distance in kms separating the two objects.
-		private double distance;
-		// Time taken by light to travel from object A to object B in milliseconds.
-		private ulong totalMillis;
+		private Scene Scene { get; set; }
 
-		public Simulation(double _distance)
+		private Thread Thread { get; set; }
+
+		public Simulation(Scene scene, Thread thread)
 		{
-			distance = _distance;
-			totalMillis = (ulong)(distance * c) * 1000;
+			Scene = scene;
+			Thread = thread;
 		}
 
 		public void Start()
 		{
-			stopwatch = Stopwatch.StartNew();
-			state = State.RUNNING;
+			Stopwatch = Stopwatch.StartNew();
+			State = SimState.RUNNING;
 		}
 
 		public void Pause()
 		{
-			if (stopwatch != null)
+			if (State == SimState.RUNNING)
 			{
-				stopwatch.Stop();
-				state = State.PAUSED;
+				Stopwatch.Stop();
+				State = SimState.PAUSED;
+			}
+			else
+			{
+				throw new Exception("Cannot pause the simulation if it is not running.");
 			}
 		}
 
 		public void Resume()
 		{
-			if (stopwatch != null)
+			if (State == SimState.PAUSED)
 			{
-				stopwatch.Start();
-				state = State.RUNNING;
+				Stopwatch.Start();
+				State = SimState.RUNNING;
+			}
+			else
+			{
+				throw new Exception("Cannot resume the simulation if it is not paused.");
 			}
 		}
 
 		public void Stop()
 		{
-			if (stopwatch != null)
+			if (State == SimState.RUNNING || State == SimState.PAUSED)
 			{
-				stopwatch.Stop();
-				state = State.STOPPED;
+				Stopwatch.Stop();
+				State = SimState.STOPPED;
+			}
+			else
+			{
+				throw new Exception("Cannot stop the simulation if it is not running or paused.");
 			}
 		}
 
-		public void ResetClock()
+		public void ResetPhotonDistance()
 		{
-			if (stopwatch != null)
-			{
-				stopwatch.Reset();
-				stopwatch.Start();
-			}
+			Stopwatch.Reset();
+			Stopwatch.Start();
 		}
 
 		public double GetDistanceTraveledRatio()
 		{
-			double elapsedSeconds = stopwatch.ElapsedMilliseconds / 1000d;
-			double distanceTraveled = elapsedSeconds * c;
-			return distanceTraveled / distance;
+			double elapsedSeconds = Stopwatch.ElapsedMilliseconds / 1000d;
+			double distanceTraveled = elapsedSeconds * Scene.Photon.Speed;
+			return distanceTraveled / Scene.Distance;
 		}
 	}
 }
