@@ -10,11 +10,9 @@ namespace Visulight
 {
     public partial class MainForm : Form
     {
-        private enum LightDirection { PointA, PointB };
-
         private Simulation simulation;
 
-        private LightDirection lightDirection = LightDirection.PointB;
+        private Thread simulationThread;
 
         private delegate void UpdatePhotonLocationDelegate(Point location);
 
@@ -34,7 +32,7 @@ namespace Visulight
             }
 
             presetComboBox.SelectedIndex = 0;
-        }
+		}
 
 
         private void MainForm_ResizeBegin(object sender, EventArgs e)
@@ -42,8 +40,6 @@ namespace Visulight
             if (simulation.State == Simulation.SimState.RUNNING)
             {
                 simulation.Pause();
-                labelInformation.Text = "Simulation en pause lors du déplacement ou redimensionnement de la fenêtre.";
-                labelInformation.ForeColor = Color.LightCoral;
             }
         }
 
@@ -99,13 +95,19 @@ namespace Visulight
 
         private void Preset_Load()
         {
-            int i = presetComboBox.SelectedIndex;
-            
-            presetLabelDistance.Text = $"Distance : { string.Format(CultureInfo.GetCultureInfo("fr-FR"), "{0:#,##0}", presets[i].distance) } km";
+            List<Scene> defaultScenes = Scene.GetDefaultScenes();
+            Scene defaultScene = defaultScenes[presetComboBox.SelectedIndex];
 
-            SetSimulation(presets[i].pointAName, presets[i].pointAImage, presets[i].pointAWidth, presets[i].pointAHeight,
-                  presets[i].pointBName, presets[i].pointBImage, presets[i].pointBWidth, presets[i].pointBHeight,
-                  presets[i].distance, presets[i].lightWidth);
+            presetLabelDistance.Text = $"Distance : {defaultScene.Distance:N0} km";
+
+            SetCurrentSimulationWithScene(new Scene
+            {
+                Name = defaultScene.Name,
+                ObjectA = defaultScene.ObjectA,
+                ObjectB = defaultScene.ObjectB,
+                Distance = defaultScene.Distance,
+                Photon = defaultScene.Photon
+            });
         }
 
 
@@ -132,7 +134,7 @@ namespace Visulight
         {
             if (customRadioButton.Checked)
             {
-                SetPointLabels(customTextBoxPointA.Text, customTextBoxPointB.Text);
+                Custom_Load();
             } 
         }
 
@@ -174,176 +176,109 @@ namespace Visulight
 
         private void Custom_Load()
         {
-            SetSimulation(customTextBoxPointA.Text, Properties.Resources.WhitePoint, 10, 10,
-                  customTextBoxPointB.Text, Properties.Resources.WhitePoint, 10, 10,
-                  (double)customNumeric.Value, 10);
+            SetCurrentSimulationWithScene(new Scene
+            {
+                Name = $"{customTextBoxPointA.Text}-{customTextBoxPointB.Text}",
+                ObjectA = new CelestialObject
+				{
+                    Name = customTextBoxPointA.Text,
+                    Image = "WhitePoint",
+                    Width = 10,
+                    Height = 10
+                },
+                ObjectB = new CelestialObject
+				{
+                    Name = customTextBoxPointB.Text,
+                    Image = "WhitePoint",
+                    Width = 10,
+                    Height = 10
+                },
+                Distance = (double)customNumeric.Value,
+                Photon = new Photon
+				{
+                    Width = 10
+				}
+            });
         }
 
 
-        private void SetSimulation(string pointAName, Image pointAImage, int pointAWidth, int pointAHeight,
-                           string pointBName, Image pointBImage, int pointBWidth, int pointBHeight,
-                           double distance, int lightWidth)
+        private void SetCurrentSimulationWithScene(Scene scene)
         {
             if (simulation != null)
-            {
-                simulation.Stop();
+			{
+                if (simulation.State == Simulation.SimState.RUNNING || simulation.State == Simulation.SimState.PAUSED)
+                {
+                    simulation.Stop();
+                }
             }
-            simulation = new Simulation(distance);
+            simulation = new Simulation(scene);
 
-            // On prépare la scène avec les images et la position de la lumière au départ
-            SetUI(pointAImage, pointAWidth, pointAHeight,
-                        pointBImage, pointBWidth, pointBHeight,
-                        lightWidth);
+			simulation.Started += Simulation_Started;
+			simulation.Paused += Simulation_Paused;
+			simulation.Resumed += Simulation_Resumed;
+			simulation.Stopped += Simulation_Stopped;
 
-            // On change le texte des labels des points
-            SetPointLabels(pointAName, pointBName);
+			scene.Photon.TargetChanged += Photon_TargetChanged;
 
+            pbPointA.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject(scene.ObjectA.Image);
+            pbPointA.Width = scene.ObjectA.Width;
+            pbPointA.Height = scene.ObjectA.Height;
+            pbPointA.Location = new Point(40, (panelSimulation.Height - scene.ObjectA.Height) / 2);
+            lbPointA.Text = scene.ObjectA.Name;
+            int lbPointA_X = pbPointA.Location.X + (pbPointA.Width - lbPointA.Width) / 2;
+            int lbPointA_Y = pbPointA.Location.Y + pbPointA.Height + 40;
+            lbPointA.Location = new Point(lbPointA_X, lbPointA_Y);
 
-            // On calcule le temps mis par la lumière du point A au point B
-            ulong timeMillis = (ulong)(distance / Simulation.speedOfLight * 1000);
-            
-            // On affiche le temps de déplacement de la lumière entre les deux points
-            SetTimeLabel(timeMillis);
-        }
-        
-        private void SetUI(Image aImage, int aWidth, int aHeight,
-                                 Image bImage,  int bWidth, int bHeight,
-                                 int lightWidth)
-        {
-            pbPointA.Image = aImage;
-            pbPointA.Width = aWidth;
-            pbPointA.Height = aHeight;
-            pbPointA.Location = new Point(40, (panelSimulation.Height - aHeight) / 2);
+            pbPointB.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject(scene.ObjectB.Image);
+            pbPointB.Width = scene.ObjectB.Width;
+            pbPointB.Height = scene.ObjectB.Height;
+            pbPointB.Location = new Point(panelSimulation.Width - (40 + scene.ObjectB.Width), (panelSimulation.Height - scene.ObjectB.Width) / 2);
+            lbPointB.Text = scene.ObjectB.Name;
+            int lbPointB_X = pbPointB.Location.X + (pbPointB.Width - lbPointB.Width) / 2;
+            int lbPointB_Y = pbPointB.Location.Y + pbPointB.Height + 40;
+            lbPointB.Location = new Point(lbPointB_X, lbPointB_Y);
 
-            pbPointB.Image = bImage;
-            pbPointB.Width = bWidth;
-            pbPointB.Height = bHeight;
-            pbPointB.Location = new Point(panelSimulation.Width - (40 + bWidth), (panelSimulation.Height - bHeight) / 2);
+            light.Width = scene.Photon.Width;
+            int photonX = pbPointA.Location.X + scene.ObjectA.Width - scene.Photon.Width;
+            int photonY = pbPointA.Location.Y + ((scene.ObjectA.Height + light.Height) / 2);
+            light.Location = new Point(photonX, photonY);
 
-            light.Width = lightWidth;
-            int x = pbPointA.Location.X + aWidth - lightWidth;
-            int y = pbPointA.Location.Y + ((aHeight + light.Height) / 2);
-            light.Location = new Point(x, y);
-        }
-
-        private void SetPointLabels(string _pointAname, string _pointBname)
-        {
-            // Point A
-            lbPointA.Text = _pointAname;
-
-            int xa = pbPointA.Location.X + (pbPointA.Width - lbPointA.Width) / 2;
-            int ya = pbPointA.Location.Y + pbPointA.Height + 40;
-            lbPointA.Location = new Point(xa, ya);
-
-            // Point B
-            lbPointB.Text = _pointBname;
-
-            int xb = pbPointB.Location.X + (pbPointB.Width - lbPointB.Width) / 2;
-            int yb = pbPointB.Location.Y + pbPointB.Height + 40;
-            lbPointB.Location = new Point(xb, yb);
+            labelTime.Text = scene.GetTimeString();
         }
 
-        private void SetTimeLabel(ulong milliseconds)
+		private void Simulation_Started(object sender, EventArgs e)
         {
-            ulong seconds = milliseconds / 1000;
-            milliseconds -= seconds * 1000;
-
-            ulong minutes = seconds / 60;
-            seconds -= minutes * 60;
-
-            ulong hours = minutes / 60;
-            minutes -= hours * 60;
-
-            ulong days = hours / 24;
-            hours -= days * 24;
-
-            ulong years = days / 365;
-            days -= years * 365;
-            
-            // Si il y a au moins 1 année
-            if (years > 0)
-            {
-                labelTime.Text = $"Temps : {years} années, {days} jours, {hours:00}:{minutes:00}:{seconds:00}.{milliseconds:000}";
-            }
-
-            // Sinon, on test s'il y a au moins 1 jour
-            else if (days > 0)
-            {
-                labelTime.Text = $"Temps : {days} jours, {hours:00}:{minutes:00}:{seconds:00}.{milliseconds:000}";
-            }
-
-            // Si ce n'est pas le cas, alors on affiche le temps qu'à partir des heures
-            else
-            {
-                labelTime.Text = $"Temps : {hours:00}:{minutes:00}:{seconds:00}.{milliseconds:000}";
-            }
-        }
-
-        
-        private void ButtonStart_Click(object sender, EventArgs e)
-        {
-            buttonStart.Visible = false;
-
-            simulation.Start();
             Text = "Visulight ‒ Simulation en cours";
-
+            buttonStart.Visible = false;
             buttonStop.Visible = true;
-
-            Thread thread = new Thread(RunSimulation);
-            thread.IsBackground = true;
-            thread.Priority = ThreadPriority.Lowest;
-            thread.Start();
+            simulationThread = new Thread(RunSimulation)
+            {
+                IsBackground = true
+            };
+            simulationThread.Start();
         }
 
-        private void RunSimulation()
+        private void Simulation_Paused(object sender, EventArgs e)
         {
-            while (simulation.State == Simulation.SimState.RUNNING || simulation.State == Simulation.SimState.PAUSED)
-            {
-                if (simulation.State == Simulation.SimState.PAUSED)
-                {
-                    Thread.Sleep(100);
-                    continue;
-                }
+            simulationThread.Suspend();
+            labelInformation.Text = "Simulation en pause lors du déplacement ou redimensionnement de la fenêtre.";
+            labelInformation.ForeColor = Color.LightCoral;
+        }
 
-                int delay = 1;
+        private void Simulation_Resumed(object sender, EventArgs e)
+        {
+            simulationThread.Resume();
+        }
 
-                int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
-                double ratio = simulation.GetDistanceTraveledRatio();
-                int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
-
-                Point newPhotonLocation = lightDirection == LightDirection.PointB ?
-                    new Point(pbPointA.Location.X + pbPointA.Width - light.Width + distanceTraveledInPixels, light.Location.Y) :
-                    new Point(pbPointB.Location.X + light.Width - distanceTraveledInPixels, light.Location.Y);
-
-                bool rightSideOutOfBound =
-                    lightDirection == LightDirection.PointB && newPhotonLocation.X >= pbPointB.Location.X - light.Width;
-                bool leftSideOutOfBound =
-                    lightDirection == LightDirection.PointA && newPhotonLocation.X <= pbPointA.Location.X + pbPointA.Width;
-
-                if (rightSideOutOfBound || leftSideOutOfBound)
-                {
-                    lightDirection = lightDirection == LightDirection.PointB ? LightDirection.PointA : LightDirection.PointB;
-                    light.BackgroundImage = lightDirection == LightDirection.PointB ?
-                        Properties.Resources.LightGoingTowardsPointB :
-                        Properties.Resources.LightGoingTowardsPointA;
-                    newPhotonLocation = lightDirection == LightDirection.PointB ?
-                        new Point(pbPointA.Location.X + pbPointA.Width - light.Width, light.Location.Y) :
-                        new Point(pbPointB.Location.X, light.Location.Y);
-                    simulation.ResetPhotonDistance();
-                    delay = 20;
-                }
-
-                light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
-                Thread.Sleep(delay);
-            }
+        private void Simulation_Stopped(object sender, EventArgs e)
+		{
+			simulationThread.Abort();
 
             Text = "Visulight";
-
             buttonStop.Visible = false;
 
             // On réinitialise la direction puis la position de la lumière
-            lightDirection = LightDirection.PointB;
-            light.Anchor = AnchorStyles.Left;
+            simulation.Scene.Photon.Target = Photon.TargetObject.OBJECT_B;
             light.BackgroundImage = Properties.Resources.LightGoingTowardsPointB;
 
             int x = pbPointA.Location.X + pbPointA.Width - light.Width;
@@ -352,6 +287,61 @@ namespace Visulight
 
             buttonStart.Visible = true;
             labelInformation.Text = "Cliquez sur 'Démarrer la simulation' pour commencer.";
+        }
+
+        private void Photon_TargetChanged(object sender, Photon.TargetObject e)
+        {
+            Photon photonObj = simulation.Scene.Photon;
+
+            light.BackgroundImage = photonObj.Target == Photon.TargetObject.OBJECT_B ?
+                Properties.Resources.LightGoingTowardsPointB :
+                Properties.Resources.LightGoingTowardsPointA;
+            Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
+                new Point(pbPointA.Location.X + pbPointA.Width - light.Width, light.Location.Y) :
+                new Point(pbPointB.Location.X, light.Location.Y);
+            //light.Anchor = AnchorStyles.Left;
+            light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
+            simulation.ResetPhotonDistance();
+        }
+
+        private void ButtonStart_Click(object sender, EventArgs e)
+        {
+            simulation.Start();
+        }
+
+        private void RunSimulation()
+        {
+            while (true)
+            {
+                int delay = 1;
+
+                int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
+                double ratio = simulation.GetDistanceTraveledRatio();
+                int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
+
+                Photon photonObj = simulation.Scene.Photon;
+
+                Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
+                    new Point(pbPointA.Location.X + pbPointA.Width - light.Width + distanceTraveledInPixels, light.Location.Y) :
+                    new Point(pbPointB.Location.X + light.Width - distanceTraveledInPixels, light.Location.Y);
+
+                light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
+
+                bool rightSideOutOfBound =
+                    photonObj.Target == Photon.TargetObject.OBJECT_B && newPhotonLocation.X >= pbPointB.Location.X - light.Width;
+                bool leftSideOutOfBound =
+                    photonObj.Target == Photon.TargetObject.OBJECT_A && newPhotonLocation.X <= pbPointA.Location.X + pbPointA.Width;
+
+                if (rightSideOutOfBound || leftSideOutOfBound)
+                {
+                    photonObj.Target = photonObj.Target == Photon.TargetObject.OBJECT_B ?
+                        Photon.TargetObject.OBJECT_A :
+                        Photon.TargetObject.OBJECT_B;
+                    delay = 20;
+                }
+
+                Thread.Sleep(delay);
+            }
         }
 
         private void UpdatePhotonLocation(Point location)
@@ -370,7 +360,7 @@ namespace Visulight
             int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
-            labelInformation.Text = $"{distanceTraveledInPixels} pixels parcourus ‒ Ratio : {simulation.GetDistanceTraveledRatio()}";
+            labelInformation.Text = $"{distanceTraveledInPixels} pixels parcourus";
             labelInformation.ForeColor = Color.Silver;
         }
     }

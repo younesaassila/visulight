@@ -1,8 +1,12 @@
-﻿namespace VisulightLibrary
+﻿using System;
+
+namespace VisulightLibrary
 {
     public class Photon
     {
         public enum TargetObject { OBJECT_A, OBJECT_B }
+
+        public event EventHandler<TargetObject> TargetChanged;
 
         private TargetObject target = TargetObject.OBJECT_B;
         public TargetObject Target
@@ -13,11 +17,14 @@
             }
             set
             {
-                // TODO: Raise OnTargetChange event.
                 target = value;
+                TargetChanged?.Invoke(this, target);
             }
         }
 
+        /// <summary>
+        /// Vitesse du photon en km/s.
+        /// </summary>
         public double Speed { get; set; } = 299_792.458;
 
         private int width;

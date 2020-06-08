@@ -1,39 +1,47 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 
 namespace VisulightLibrary
 {
-    public class Simulation
+	public class Simulation
     {
         public enum SimState { STOPPED, RUNNING, PAUSED }
 
         public SimState State { get; private set; } = SimState.STOPPED;
 
-        private Stopwatch Stopwatch { get; set; } = new Stopwatch();
+		public event EventHandler<EventArgs> Started;
 
-        private Scene Scene { get; set; }
+        public event EventHandler<EventArgs> Paused;
 
-        private Thread Thread { get; set; }
+        public event EventHandler<EventArgs> Resumed;
 
-        public Simulation(Scene scene, Thread thread)
+        public event EventHandler<EventArgs> Stopped;
+
+        public Scene Scene { get; }
+
+
+        private Stopwatch stopwatch = new Stopwatch();
+
+        
+        public Simulation(Scene scene)
         {
-            Scene = scene;
-            Thread = thread;
+			Scene = scene;
         }
 
         public void Start()
         {
-            Stopwatch = Stopwatch.StartNew();
+            stopwatch = Stopwatch.StartNew();
             State = SimState.RUNNING;
+			Started?.Invoke(this, new EventArgs());
         }
 
         public void Pause()
         {
             if (State == SimState.RUNNING)
             {
-                Stopwatch.Stop();
+                stopwatch.Stop();
                 State = SimState.PAUSED;
+                Paused?.Invoke(this, new EventArgs());
             }
             else
             {
@@ -45,8 +53,9 @@ namespace VisulightLibrary
         {
             if (State == SimState.PAUSED)
             {
-                Stopwatch.Start();
+                stopwatch.Start();
                 State = SimState.RUNNING;
+                Resumed?.Invoke(this, new EventArgs());
             }
             else
             {
@@ -58,8 +67,9 @@ namespace VisulightLibrary
         {
             if (State == SimState.RUNNING || State == SimState.PAUSED)
             {
-                Stopwatch.Stop();
+                stopwatch.Stop();
                 State = SimState.STOPPED;
+                Stopped?.Invoke(this, new EventArgs());
             }
             else
             {
@@ -69,13 +79,13 @@ namespace VisulightLibrary
 
         public void ResetPhotonDistance()
         {
-            Stopwatch.Reset();
-            Stopwatch.Start();
+            stopwatch.Reset();
+            stopwatch.Start();
         }
 
         public double GetDistanceTraveledRatio()
         {
-            double elapsedSeconds = Stopwatch.ElapsedMilliseconds / 1000d;
+            double elapsedSeconds = stopwatch.ElapsedMilliseconds / 1000d;
             double distanceTraveled = elapsedSeconds * Scene.Photon.Speed;
             return distanceTraveled / Scene.Distance;
         }
