@@ -59,7 +59,7 @@
 			this.labelTime = new System.Windows.Forms.Label();
 			this.pbPointA = new System.Windows.Forms.PictureBox();
 			this.pbPointB = new System.Windows.Forms.PictureBox();
-			this.light = new System.Windows.Forms.Panel();
+			this.panelPhoton = new System.Windows.Forms.Panel();
 			this.labelInformation = new System.Windows.Forms.Label();
 			this.buttonHide = new System.Windows.Forms.Button();
 			this.buttonShow = new System.Windows.Forms.Button();
@@ -366,6 +366,7 @@
 			// 
 			// labelTitle
 			// 
+			this.labelTitle.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelTitle.ForeColor = System.Drawing.Color.White;
 			this.labelTitle.Location = new System.Drawing.Point(71, 15);
@@ -374,6 +375,11 @@
 			this.labelTitle.TabIndex = 0;
 			this.labelTitle.Text = "Visulight";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelTitle.Click += new System.EventHandler(this.LabelTitle_Click);
+			this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelTitle_MouseDown);
+			this.labelTitle.MouseEnter += new System.EventHandler(this.LabelTitle_MouseEnter);
+			this.labelTitle.MouseLeave += new System.EventHandler(this.LabelTitle_MouseLeave);
+			this.labelTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LabelTitle_MouseUp);
 			// 
 			// buttonStart
 			// 
@@ -418,7 +424,7 @@
 			this.panelSimulation.Controls.Add(this.labelTime);
 			this.panelSimulation.Controls.Add(this.pbPointA);
 			this.panelSimulation.Controls.Add(this.pbPointB);
-			this.panelSimulation.Controls.Add(this.light);
+			this.panelSimulation.Controls.Add(this.panelPhoton);
 			this.panelSimulation.Controls.Add(this.labelInformation);
 			this.panelSimulation.Controls.Add(this.buttonHide);
 			this.panelSimulation.Controls.Add(this.buttonShow);
@@ -487,16 +493,16 @@
 			this.pbPointB.TabIndex = 1;
 			this.pbPointB.TabStop = false;
 			// 
-			// light
+			// panelPhoton
 			// 
-			this.light.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.light.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
-			this.light.BackgroundImage = global::Visulight.Properties.Resources.LightGoingTowardsPointB;
-			this.light.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.light.Location = new System.Drawing.Point(62, 304);
-			this.light.Name = "light";
-			this.light.Size = new System.Drawing.Size(18, 2);
-			this.light.TabIndex = 2;
+			this.panelPhoton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.panelPhoton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
+			this.panelPhoton.BackgroundImage = global::Visulight.Properties.Resources.LightGoingTowardsPointB;
+			this.panelPhoton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.panelPhoton.Location = new System.Drawing.Point(62, 304);
+			this.panelPhoton.Name = "panelPhoton";
+			this.panelPhoton.Size = new System.Drawing.Size(18, 2);
+			this.panelPhoton.TabIndex = 2;
 			// 
 			// labelInformation
 			// 
@@ -586,7 +592,7 @@
         private System.Windows.Forms.NumericUpDown customNumeric;
         private System.Windows.Forms.PictureBox pbPointB;
         private System.Windows.Forms.PictureBox pbPointA;
-        private System.Windows.Forms.Panel light;
+        private System.Windows.Forms.Panel panelPhoton;
         private System.Windows.Forms.Label presetLabelScale;
         private System.Windows.Forms.Label labelInformation;
         private System.Windows.Forms.Label labelTime;

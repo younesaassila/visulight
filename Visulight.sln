@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visulight", "Visulight\Visu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulightLibrary", "VisulightLibrary\VisulightLibrary.csproj", "{40A2477E-BB45-4FA7-B609-6D3387D5F33B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulightConsole", "VisulightConsole\VisulightConsole.csproj", "{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0BC9FA7-7CEC-4CC4-A6A5-55ED0BCA3354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
