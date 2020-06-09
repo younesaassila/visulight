@@ -11,10 +11,6 @@ namespace VisulightLibrary
 
 		public event EventHandler<EventArgs> Started;
 
-        public event EventHandler<EventArgs> Paused;
-
-        public event EventHandler<EventArgs> Resumed;
-
         public event EventHandler<EventArgs> Stopped;
 
         public Scene Scene { get; }
@@ -33,34 +29,6 @@ namespace VisulightLibrary
             stopwatch = Stopwatch.StartNew();
             State = SimState.RUNNING;
 			Started?.Invoke(this, new EventArgs());
-        }
-
-        public void Pause()
-        {
-            if (State == SimState.RUNNING)
-            {
-                stopwatch.Stop();
-                State = SimState.PAUSED;
-                Paused?.Invoke(this, new EventArgs());
-            }
-            else
-            {
-                throw new Exception("Cannot pause the simulation if it is not running.");
-            }
-        }
-
-        public void Resume()
-        {
-            if (State == SimState.PAUSED)
-            {
-                stopwatch.Start();
-                State = SimState.RUNNING;
-                Resumed?.Invoke(this, new EventArgs());
-            }
-            else
-            {
-                throw new Exception("Cannot resume the simulation if it is not paused.");
-            }
         }
 
         public void Stop()

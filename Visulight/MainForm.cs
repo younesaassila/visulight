@@ -35,22 +35,6 @@ namespace Visulight
 		}
 
 
-        private void MainForm_ResizeBegin(object sender, EventArgs e)
-        {
-            if (simulation.State == Simulation.SimState.RUNNING)
-            {
-                simulation.Pause();
-            }
-        }
-
-        private void MainForm_ResizeEnd(object sender, EventArgs e)
-        {
-            if (simulation.State == Simulation.SimState.PAUSED)
-            {
-                simulation.Resume();
-            }
-        }
-
         private void ButtonShow_Click(object sender, EventArgs e)
         {
             buttonShow.Visible = false;
@@ -214,8 +198,6 @@ namespace Visulight
             simulation = new Simulation(scene);
 
 			simulation.Started += Simulation_Started;
-			simulation.Paused += Simulation_Paused;
-			simulation.Resumed += Simulation_Resumed;
 			simulation.Stopped += Simulation_Stopped;
 
 			scene.Photon.TargetChanged += Photon_TargetChanged;
@@ -258,18 +240,6 @@ namespace Visulight
             simulationThread.Start();
         }
 
-        private void Simulation_Paused(object sender, EventArgs e)
-        {
-            simulationThread.Suspend();
-            labelInformation.Text = "Simulation en pause lors du déplacement ou redimensionnement de la fenêtre.";
-            labelInformation.ForeColor = Color.LightCoral;
-        }
-
-        private void Simulation_Resumed(object sender, EventArgs e)
-        {
-            simulationThread.Resume();
-        }
-
         private void Simulation_Stopped(object sender, EventArgs e)
 		{
 			simulationThread.Abort();
@@ -298,7 +268,7 @@ namespace Visulight
                 Properties.Resources.LightGoingTowardsPointA;
             Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                 new Point(pbPointA.Location.X + pbPointA.Width - light.Width, light.Location.Y) :
-                new Point(pbPointB.Location.X, light.Location.Y);
+                new Point(pbPointB.Location.X, panelSimulation.Height / 2);
             //light.Anchor = AnchorStyles.Left;
             light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
             simulation.ResetPhotonDistance();
@@ -322,8 +292,8 @@ namespace Visulight
                 Photon photonObj = simulation.Scene.Photon;
 
                 Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
-                    new Point(pbPointA.Location.X + pbPointA.Width - light.Width + distanceTraveledInPixels, light.Location.Y) :
-                    new Point(pbPointB.Location.X + light.Width - distanceTraveledInPixels, light.Location.Y);
+                    new Point(pbPointA.Location.X + pbPointA.Width - light.Width + distanceTraveledInPixels, panelSimulation.Height / 2) :
+                    new Point(pbPointB.Location.X + light.Width - distanceTraveledInPixels, panelSimulation.Height / 2);
 
                 light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
 
@@ -358,9 +328,14 @@ namespace Visulight
         private void UpdateInformationLabel()
         {
             int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
+
+            ulong millis = (ulong)(simulation.Scene.Distance / simulation.Scene.Photon.Speed * 1000);
+            ulong seconds = millis / 1000;
+            int speed = distanceInPixels / (int)seconds;
+            
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
-            labelInformation.Text = $"{distanceTraveledInPixels} pixels parcourus";
+            labelInformation.Text = $"Vitesse de {speed} px/s - {distanceTraveledInPixels} pixels parcourus";
             labelInformation.ForeColor = Color.Silver;
         }
     }
