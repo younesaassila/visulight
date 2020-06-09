@@ -269,7 +269,6 @@ namespace Visulight
             Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                 new Point(pbPointA.Location.X + pbPointA.Width - light.Width, light.Location.Y) :
                 new Point(pbPointB.Location.X, panelSimulation.Height / 2);
-            //light.Anchor = AnchorStyles.Left;
             light.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
             simulation.ResetPhotonDistance();
         }
@@ -331,13 +330,14 @@ namespace Visulight
             int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
             // Temps que met le photon pour aller de l'objet A à l'objet B en secondes.
             ulong seconds = simulation.Scene.GetMillis() / 1000;
-            // Vitesse du photon en pixels par seconde.
-            int speed = distanceInPixels / (int)seconds;
             // Distance parcourue par le photon depuis son départ en pixels.
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
 
-            labelInformation.Text = $"Vitesse de {speed} px/s ‒ {distanceTraveledInPixels}/{distanceInPixels} pixels parcourus";
+            string formattedSpeed = (int)seconds == 0 ? "" : $"Vitesse de {distanceInPixels / (int)seconds} px/s ‒ ";
+            string formattedDistance = $"{distanceTraveledInPixels}/{distanceInPixels} pixels parcourus";
+
+            labelInformation.Text = $"{formattedSpeed}{formattedDistance}";
             labelInformation.ForeColor = Color.Silver;
         }
     }

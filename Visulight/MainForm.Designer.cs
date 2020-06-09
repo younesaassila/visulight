@@ -489,7 +489,7 @@
 			// 
 			// light
 			// 
-			this.light.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.light.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.light.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
 			this.light.BackgroundImage = global::Visulight.Properties.Resources.LightGoingTowardsPointB;
 			this.light.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
