@@ -327,15 +327,17 @@ namespace Visulight
 
         private void UpdateInformationLabel()
         {
+            // Distance entre les deux objets en pixels.
             int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
-
-            ulong millis = (ulong)(simulation.Scene.Distance / simulation.Scene.Photon.Speed * 1000);
-            ulong seconds = millis / 1000;
+            // Temps que met le photon pour aller de l'objet A à l'objet B en secondes.
+            ulong seconds = simulation.Scene.GetMillis() / 1000;
+            // Vitesse du photon en pixels par seconde.
             int speed = distanceInPixels / (int)seconds;
-            
+            // Distance parcourue par le photon depuis son départ en pixels.
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
-            labelInformation.Text = $"Vitesse de {speed} px/s - {distanceTraveledInPixels} pixels parcourus";
+
+            labelInformation.Text = $"Vitesse de {speed} px/s ‒ {distanceTraveledInPixels}/{distanceInPixels} pixels parcourus";
             labelInformation.ForeColor = Color.Silver;
         }
     }

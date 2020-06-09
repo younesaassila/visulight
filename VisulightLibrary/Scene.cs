@@ -64,8 +64,20 @@ namespace VisulightLibrary
 
 
         /// <summary>
+        /// Récupère le temps d'un aller pour le photon de l'objet céleste A
+        /// à l'objet céleste B.
+        /// </summary>
+        /// <returns>
+        /// Un ulong comportant le nombre de millisecondes pour 1 aller.
+        /// </returns>
+        public ulong GetMillis()
+		{
+            return (ulong)(Distance / Photon.Speed * 1000);
+        }
+
+        /// <summary>
         /// Récupère le temps d'un aller pour le photon depuis l'objet
-        /// céleste A vers l'objet céleste B.
+        /// céleste A vers l'objet céleste B et le convertit en texte.
         /// </summary>
         /// <returns>
         /// Une chaîne de caractère indiquant le temps d'un aller pour
@@ -76,7 +88,7 @@ namespace VisulightLibrary
         {
             ulong millis, seconds, minutes, hours, days, years;
 
-            millis = (ulong)(Distance / Photon.Speed * 1000);
+            millis = GetMillis();
 
             seconds = millis / 1000;
             millis -= seconds * 1000;
