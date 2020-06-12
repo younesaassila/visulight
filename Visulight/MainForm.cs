@@ -289,8 +289,6 @@ namespace Visulight
         {
             while (true)
             {
-                int delay = 1;
-
                 int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
                 double ratio = simulation.GetDistanceTraveledRatio();
                 int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
@@ -299,7 +297,7 @@ namespace Visulight
 
                 Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                     new Point(pbPointA.Location.X + pbPointA.Width - panelPhoton.Width + distanceTraveledInPixels, panelSimulation.Height / 2) :
-                    new Point(pbPointB.Location.X + panelPhoton.Width - distanceTraveledInPixels, panelSimulation.Height / 2);
+                    new Point(pbPointB.Location.X - distanceTraveledInPixels, panelSimulation.Height / 2);
 
                 panelPhoton.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
 
@@ -313,10 +311,9 @@ namespace Visulight
                     photonObj.Target = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                         Photon.TargetObject.OBJECT_A :
                         Photon.TargetObject.OBJECT_B;
-                    delay = 20;
                 }
 
-                Thread.Sleep(delay);
+                Thread.Sleep(1);
             }
         }
 
@@ -344,14 +341,20 @@ namespace Visulight
         {
             // Distance entre les deux objets en pixels.
             int distanceInPixels = pbPointB.Location.X - pbPointA.Location.X - pbPointA.Width;
-            // Temps que met le photon pour aller de l'objet A à l'objet B en secondes.
-            ulong seconds = simulation.Scene.GetMillis() / 1000;
+            // Vitesse du photon en pixels par seconde.
+            double pixels = distanceInPixels / (simulation.Scene.GetMillis() / 1000d);
+            int seconds = 1;
+            if (pixels < 1)
+			{
+                seconds = (int)(1 / pixels);
+                pixels = 1;
+			}
             // Distance parcourue par le photon depuis son départ en pixels.
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
 
-            string formattedSpeed = (int)seconds == 0 ? "" : $"Vitesse de {distanceInPixels / (int)seconds} px/s ‒ ";
-            string formattedDistance = $"{distanceTraveledInPixels}/{distanceInPixels} pixels parcourus";
+            string formattedSpeed = $"Vitesse de {(int)pixels:N0} px/{(seconds == 1 ? "" : $"{seconds:N0} ")}s ‒ ";
+            string formattedDistance = $"{distanceTraveledInPixels:N0}/{distanceInPixels:N0} pixels parcourus";
 
             labelInformation.Text = $"{formattedSpeed}{formattedDistance}";
             labelInformation.ForeColor = Color.Silver;

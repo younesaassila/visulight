@@ -103,12 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LightGoingTowardsPointA.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LightGoingTowardsPointB.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Earth.png" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +134,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\LightGoingTowardsPointB.png" />
+    <None Include="Resources\LightGoingTowardsPointA.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VisulightLibrary\VisulightLibrary.csproj">
