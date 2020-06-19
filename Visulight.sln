@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visulight", "Visulight\Visu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisulightLibrary", "VisulightLibrary\VisulightLibrary.csproj", "{40A2477E-BB45-4FA7-B609-6D3387D5F33B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "VisulightSetup", "VisulightSetup\VisulightSetup.vdproj", "{F266D7E5-DD6B-4EAC-B66B-7CDC47BE3B36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40A2477E-BB45-4FA7-B609-6D3387D5F33B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F266D7E5-DD6B-4EAC-B66B-7CDC47BE3B36}.Debug|Any CPU.ActiveCfg = Debug
+		{F266D7E5-DD6B-4EAC-B66B-7CDC47BE3B36}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
