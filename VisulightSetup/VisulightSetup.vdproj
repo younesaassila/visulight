@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:VisulightSetup"
-"LanguageId" = "3:1033"
+"LanguageId" = "3:1036"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:1033"
+"UILanguageId" = "3:1036"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -21,14 +21,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E79A13AC3B223DC3C9267C3E60AC7B23"
+        "MsmKey" = "8:_353C4BFEC1013D4A01C93305DB20E3D6"
         "OwnerKey" = "8:_216A9B485A3542B097BFEABC65139922"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_E72F9D171F9C4975B070F70B2F1C3378"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E79A13AC3B223DC3C9267C3E60AC7B23"
+        "OwnerKey" = "8:_353C4BFEC1013D4A01C93305DB20E3D6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,13 +106,18 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E79A13AC3B223DC3C9267C3E60AC7B23"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_353C4BFEC1013D4A01C93305DB20E3D6"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:VisulightLibrary, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_353C4BFEC1013D4A01C93305DB20E3D6"
+                    {
+                    "Name" = "8:VisulightLibrary.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:VisulightLibrary.dll"
             "TargetName" = "8:"
@@ -124,6 +135,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E72F9D171F9C4975B070F70B2F1C3378"
+            {
+            "SourcePath" = "8:..\\Visulight\\Icon.ico"
+            "TargetName" = "8:Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6AB72514C8844842B90550105840653B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -175,32 +206,32 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1033"
+        "LangId" = "3:1036"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:VisulightSetup"
-        "ProductCode" = "8:{7FB05ADF-0A5D-46FA-A36D-CDF489E8B6C7}"
-        "PackageCode" = "8:{8E48C837-B92A-4E45-92B8-9B80E9C9626D}"
+        "ProductName" = "8:Visulight"
+        "ProductCode" = "8:{B30D3C9B-7872-41B5-BA02-EA0558282764}"
+        "PackageCode" = "8:{935D91C1-A9FB-4DB0-9124-523B62F8C1C3}"
         "UpgradeCode" = "8:{3F700C0C-C89D-4D37-A585-2933A4FE7C66}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:2.0.0"
+        "Manufacturer" = "8:Younes Aassila"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:VisulightSetup"
+        "Title" = "8:Installer Visulight"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Younes Aassila"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
+        "ARPCOMMENTS" = "8:Visualisez le déplacement de la lumière entre deux points dans l'espace grâce à Visulight."
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_E72F9D171F9C4975B070F70B2F1C3378"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -303,6 +334,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BC7314D788A7463C8E927F2B8D2D32E0"
+            {
+            "Name" = "8:Visulight"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_216A9B485A3542B097BFEABC65139922"
+            "Folder" = "8:_7A54C3AE3CB948BB84965B1A9AC4F713"
+            "WorkingFolder" = "8:_6AB72514C8844842B90550105840653B"
+            "Icon" = "8:_E72F9D171F9C4975B070F70B2F1C3378"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
