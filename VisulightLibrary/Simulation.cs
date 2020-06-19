@@ -3,13 +3,13 @@ using System.Diagnostics;
 
 namespace VisulightLibrary
 {
-	public class Simulation
+    public class Simulation
     {
         public enum SimState { STOPPED, RUNNING, PAUSED }
 
         public SimState State { get; private set; } = SimState.STOPPED;
 
-		public event EventHandler<EventArgs> Started;
+        public event EventHandler<EventArgs> Started;
 
         public event EventHandler<EventArgs> Stopped;
 
@@ -21,14 +21,14 @@ namespace VisulightLibrary
         
         public Simulation(Scene scene)
         {
-			Scene = scene;
+            Scene = scene;
         }
 
         public void Start()
         {
             stopwatch = Stopwatch.StartNew();
             State = SimState.RUNNING;
-			Started?.Invoke(this, new EventArgs());
+            Started?.Invoke(this, new EventArgs());
         }
 
         public void Stop()

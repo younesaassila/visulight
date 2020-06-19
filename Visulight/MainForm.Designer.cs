@@ -287,7 +287,7 @@
 			this.customNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.customNumeric.ThousandsSeparator = true;
 			this.customNumeric.Value = new decimal(new int[] {
-            72000,
+            230502,
             0,
             0,
             0});
@@ -375,11 +375,6 @@
 			this.labelTitle.TabIndex = 0;
 			this.labelTitle.Text = "Visulight";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.labelTitle.Click += new System.EventHandler(this.LabelTitle_Click);
-			this.labelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LabelTitle_MouseDown);
-			this.labelTitle.MouseEnter += new System.EventHandler(this.LabelTitle_MouseEnter);
-			this.labelTitle.MouseLeave += new System.EventHandler(this.LabelTitle_MouseLeave);
-			this.labelTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LabelTitle_MouseUp);
 			// 
 			// buttonStart
 			// 
@@ -613,6 +608,6 @@
         private System.Windows.Forms.Button ex_Saturne_Titan;
         private System.Windows.Forms.Button ex_Terre_Voyager1;
         private System.Windows.Forms.Label customExamples;
-    }
+	}
 }
 

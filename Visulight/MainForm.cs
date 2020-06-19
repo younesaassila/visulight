@@ -23,8 +23,9 @@ namespace Visulight
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            List<Scene> defaultScenes = Scene.GetDefaultScenes();
+            Text = $"{Application.ProductName} {Application.ProductVersion}";
 
+            List<Scene> defaultScenes = Scene.GetDefaultScenes();
             foreach (Scene scene in defaultScenes)
             {
                 presetComboBox.Items.Add(scene.Name);
@@ -36,6 +37,8 @@ namespace Visulight
 
         private void ButtonShow_Click(object sender, EventArgs e)
         {
+            if (panelOptions.Visible) return;
+
             buttonShow.Visible = false;
             
             panelSimulation.Location = new Point(panelOptions.Width, 0);
@@ -47,6 +50,8 @@ namespace Visulight
 
         private void ButtonHide_Click(object sender, EventArgs e)
         {
+            if (!panelOptions.Visible) return;
+
             buttonHide.Visible = false;
 
             panelOptions.Visible = false;
@@ -54,40 +59,6 @@ namespace Visulight
             panelSimulation.Width += panelOptions.Width;
 
             buttonShow.Visible = true;
-        }
-
-
-        private void LabelTitle_MouseEnter(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            label.ForeColor = Color.Gainsboro;
-        }
-
-        private void LabelTitle_MouseLeave(object sender, EventArgs e)
-        {
-            Label label = (Label)sender;
-            label.ForeColor = Color.White;
-        }
-
-        private void LabelTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            Label label = (Label)sender;
-            label.ForeColor = Color.DarkGray;
-        }
-
-        private void LabelTitle_MouseUp(object sender, MouseEventArgs e)
-        {
-            Label label = (Label)sender;
-            label.ForeColor = Color.White;
-        }
-
-        private void LabelTitle_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(
-                $"Nom : {Application.ProductName}\nVersion : {Application.ProductVersion}\nAuteur : {Application.CompanyName}",
-                $"À propos de {Application.ProductName}",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
 
@@ -116,15 +87,7 @@ namespace Visulight
             Scene defaultScene = defaultScenes[presetComboBox.SelectedIndex];
 
             presetLabelDistance.Text = $"Distance : {defaultScene.Distance:N0} km";
-
-            SetCurrentSimulationWithScene(new Scene
-            {
-                Name = defaultScene.Name,
-                ObjectA = defaultScene.ObjectA,
-                ObjectB = defaultScene.ObjectB,
-                Distance = defaultScene.Distance,
-                Photon = defaultScene.Photon
-            });
+            SetCurrentSimulationWithScene(defaultScene);
         }
 
 
@@ -232,8 +195,9 @@ namespace Visulight
 
             simulation.Started += Simulation_Started;
             simulation.Stopped += Simulation_Stopped;
-
             scene.Photon.TargetChanged += Photon_TargetChanged;
+
+            #region Mise à jour de l'interface graphique
 
             pbPointA.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject(scene.ObjectA.Image);
             pbPointA.Width = scene.ObjectA.Width;
@@ -259,6 +223,8 @@ namespace Visulight
             panelPhoton.Location = new Point(photonX, photonY);
 
             labelTime.Text = scene.GetTimeString();
+
+            #endregion
         }
 
 
@@ -275,7 +241,7 @@ namespace Visulight
 
         private void Simulation_Started(object sender, EventArgs e)
         {
-            Text = "Visulight ‒ Simulation en cours";
+            Text = $"{Application.ProductName} {Application.ProductVersion} ‒ Simulation en cours";
             buttonStart.Visible = false;
             buttonStop.Visible = true;
             simulationThread = new Thread(RunSimulation)
@@ -294,25 +260,31 @@ namespace Visulight
                 int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
 
                 Photon photonObj = simulation.Scene.Photon;
-
                 Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                     new Point(pbPointA.Location.X + pbPointA.Width - panelPhoton.Width + distanceTraveledInPixels, panelSimulation.Height / 2) :
                     new Point(pbPointB.Location.X - distanceTraveledInPixels, panelSimulation.Height / 2);
 
+                bool reachedObjectB =
+                    photonObj.Target == Photon.TargetObject.OBJECT_B
+                    && newPhotonLocation.X >= pbPointB.Location.X - panelPhoton.Width;
+                bool reachedObjectA =
+                    photonObj.Target == Photon.TargetObject.OBJECT_A
+                    && newPhotonLocation.X <= pbPointA.Location.X + pbPointA.Width;
+
+                // On met à jour la position du photon en dehors de ce thread.
                 panelPhoton.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
 
-                bool rightSideOutOfBound =
-                    photonObj.Target == Photon.TargetObject.OBJECT_B && newPhotonLocation.X >= pbPointB.Location.X - panelPhoton.Width;
-                bool leftSideOutOfBound =
-                    photonObj.Target == Photon.TargetObject.OBJECT_A && newPhotonLocation.X <= pbPointA.Location.X + pbPointA.Width;
-
-                if (rightSideOutOfBound || leftSideOutOfBound)
+                // Si le photon a atteint sa cible, alors on le fait changer
+                // de direction.
+                if (reachedObjectB || reachedObjectA)
                 {
                     photonObj.Target = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                         Photon.TargetObject.OBJECT_A :
                         Photon.TargetObject.OBJECT_B;
                 }
 
+                // On met en pause le thread afin de limiter l'utilisation du
+                // processeur.
                 Thread.Sleep(1);
             }
         }
@@ -321,13 +293,16 @@ namespace Visulight
         {
             Photon photonObj = simulation.Scene.Photon;
 
+            // Mise à jour de l'image.
             panelPhoton.BackgroundImage = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                 Properties.Resources.LightGoingTowardsPointB :
                 Properties.Resources.LightGoingTowardsPointA;
+            // Mise à jour de la position.
             Point newPhotonLocation = photonObj.Target == Photon.TargetObject.OBJECT_B ?
                 new Point(pbPointA.Location.X + pbPointA.Width - panelPhoton.Width, panelPhoton.Location.Y) :
                 new Point(pbPointB.Location.X, panelSimulation.Height / 2);
             panelPhoton.Invoke(new UpdatePhotonLocationDelegate(UpdatePhotonLocation), newPhotonLocation);
+            // Mise à jour de la simulation.
             simulation.ResetPhotonDistance();
         }
 
@@ -345,10 +320,10 @@ namespace Visulight
             double pixels = distanceInPixels / (simulation.Scene.GetMillis() / 1000d);
             int seconds = 1;
             if (pixels < 1)
-			{
+            {
                 seconds = (int)(1 / pixels);
                 pixels = 1;
-			}
+            }
             // Distance parcourue par le photon depuis son départ en pixels.
             double ratio = simulation.GetDistanceTraveledRatio();
             int distanceTraveledInPixels = (int)(distanceInPixels * ratio);
@@ -365,16 +340,16 @@ namespace Visulight
         {
             simulationThread.Abort();
 
-            Text = "Visulight";
+            Text = $"{Application.ProductName} {Application.ProductVersion}";
             buttonStop.Visible = false;
 
-            // On réinitialise la direction puis la position de la lumière
+            // On réinitialise la direction puis la position de la lumière.
             simulation.Scene.Photon.Target = Photon.TargetObject.OBJECT_B;
             panelPhoton.BackgroundImage = Properties.Resources.LightGoingTowardsPointB;
 
-            int x = pbPointA.Location.X + pbPointA.Width - panelPhoton.Width;
-            int y = pbPointA.Location.Y + ((pbPointA.Height + panelPhoton.Height) / 2);
-            panelPhoton.Location = new Point(x, y);
+            int photonX = pbPointA.Location.X + pbPointA.Width - panelPhoton.Width;
+            int photonY = pbPointA.Location.Y + ((pbPointA.Height + panelPhoton.Height) / 2);
+            panelPhoton.Location = new Point(photonX, photonY);
 
             buttonStart.Visible = true;
             labelInformation.Text = "Cliquez sur 'Démarrer la simulation' pour commencer.";

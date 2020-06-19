@@ -71,7 +71,7 @@ namespace VisulightLibrary
         /// Un ulong comportant le nombre de millisecondes pour 1 aller.
         /// </returns>
         public ulong GetMillis()
-		{
+        {
             return (ulong)(Distance / Photon.Speed * 1000);
         }
 
@@ -125,7 +125,7 @@ namespace VisulightLibrary
             {
                 new Scene
                 {
-                    Name = "Terre-Lune",
+                    Name = "Terre ↔ Lune",
                     ObjectA = new CelestialObject
                     {
                         Name = "Terre",
@@ -149,7 +149,7 @@ namespace VisulightLibrary
 
                 new Scene
                 {
-                    Name = "Terre-Satellite géostationnaire",
+                    Name = "Terre ↔ Satellite géostationnaire",
                     ObjectA = new CelestialObject
                     {
                         Name = "Terre",
@@ -173,7 +173,7 @@ namespace VisulightLibrary
 
                 new Scene
                 {
-                    Name = "Terre-Mars (proche)",
+                    Name = "Terre ↔ Mars (proche)",
                     ObjectA = new CelestialObject
                     {
                         Name = "Terre",
@@ -197,7 +197,7 @@ namespace VisulightLibrary
 
                 new Scene
                 {
-                    Name = "Terre-Mars (éloigné)",
+                    Name = "Terre ↔ Mars (éloigné)",
                     ObjectA = new CelestialObject
                     {
                         Name = "Terre",
@@ -221,7 +221,7 @@ namespace VisulightLibrary
 
                 new Scene
                 {
-                    Name = "Soleil-Terre",
+                    Name = "Soleil ↔ Terre",
                     ObjectA = new CelestialObject
                     {
                         Name = "Soleil",
