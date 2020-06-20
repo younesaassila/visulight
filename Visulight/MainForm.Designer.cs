@@ -287,7 +287,7 @@
 			this.customNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.customNumeric.ThousandsSeparator = true;
 			this.customNumeric.Value = new decimal(new int[] {
-            230502,
+            72000,
             0,
             0,
             0});
