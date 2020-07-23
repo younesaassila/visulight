@@ -108,6 +108,7 @@
 			// ex_Soleil_Neptune
 			// 
 			this.ex_Soleil_Neptune.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.ex_Soleil_Neptune.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ex_Soleil_Neptune.FlatAppearance.BorderSize = 0;
 			this.ex_Soleil_Neptune.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Soleil_Neptune.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,6 +124,7 @@
 			// ex_Jupiter_Europe
 			// 
 			this.ex_Jupiter_Europe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.ex_Jupiter_Europe.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ex_Jupiter_Europe.FlatAppearance.BorderSize = 0;
 			this.ex_Jupiter_Europe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Jupiter_Europe.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -138,6 +140,7 @@
 			// ex_Saturne_Titan
 			// 
 			this.ex_Saturne_Titan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.ex_Saturne_Titan.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ex_Saturne_Titan.FlatAppearance.BorderSize = 0;
 			this.ex_Saturne_Titan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Saturne_Titan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,6 +156,7 @@
 			// ex_Terre_Voyager1
 			// 
 			this.ex_Terre_Voyager1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.ex_Terre_Voyager1.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.ex_Terre_Voyager1.FlatAppearance.BorderSize = 0;
 			this.ex_Terre_Voyager1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Terre_Voyager1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,6 +310,7 @@
 			// 
 			// customRadioButton
 			// 
+			this.customRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.customRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.customRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.customRadioButton.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -338,6 +343,7 @@
 			// presetComboBox
 			// 
 			this.presetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			this.presetComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.presetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.presetComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.presetComboBox.ForeColor = System.Drawing.Color.White;
@@ -352,6 +358,7 @@
 			// presetRadioButton
 			// 
 			this.presetRadioButton.Checked = true;
+			this.presetRadioButton.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.presetRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.presetRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.presetRadioButton.ForeColor = System.Drawing.Color.LightSkyBlue;
@@ -366,7 +373,7 @@
 			// 
 			// labelTitle
 			// 
-			this.labelTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.labelTitle.Cursor = System.Windows.Forms.Cursors.Default;
 			this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelTitle.ForeColor = System.Drawing.Color.White;
 			this.labelTitle.Location = new System.Drawing.Point(71, 15);
@@ -380,6 +387,7 @@
 			// 
 			this.buttonStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.buttonStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.buttonStart.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonStart.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
 			this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -396,6 +404,7 @@
 			// 
 			this.buttonStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.buttonStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+			this.buttonStop.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonStop.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
 			this.buttonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonStop.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -515,6 +524,7 @@
 			// buttonHide
 			// 
 			this.buttonHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+			this.buttonHide.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonHide.FlatAppearance.BorderSize = 0;
 			this.buttonHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonHide.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -531,6 +541,7 @@
 			// buttonShow
 			// 
 			this.buttonShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+			this.buttonShow.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonShow.FlatAppearance.BorderSize = 0;
 			this.buttonShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonShow.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
