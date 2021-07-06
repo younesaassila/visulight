@@ -101,8 +101,9 @@
 			this.panelOptions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panelOptions.ForeColor = System.Drawing.Color.Black;
 			this.panelOptions.Location = new System.Drawing.Point(0, 0);
+			this.panelOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.panelOptions.Name = "panelOptions";
-			this.panelOptions.Size = new System.Drawing.Size(275, 611);
+			this.panelOptions.Size = new System.Drawing.Size(344, 764);
 			this.panelOptions.TabIndex = 0;
 			// 
 			// ex_Soleil_Neptune
@@ -113,9 +114,10 @@
 			this.ex_Soleil_Neptune.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Soleil_Neptune.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ex_Soleil_Neptune.ForeColor = System.Drawing.Color.Gainsboro;
-			this.ex_Soleil_Neptune.Location = new System.Drawing.Point(151, 496);
+			this.ex_Soleil_Neptune.Location = new System.Drawing.Point(189, 620);
+			this.ex_Soleil_Neptune.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.ex_Soleil_Neptune.Name = "ex_Soleil_Neptune";
-			this.ex_Soleil_Neptune.Size = new System.Drawing.Size(105, 23);
+			this.ex_Soleil_Neptune.Size = new System.Drawing.Size(131, 29);
 			this.ex_Soleil_Neptune.TabIndex = 27;
 			this.ex_Soleil_Neptune.Text = "Soleil ↔ Neptune";
 			this.ex_Soleil_Neptune.UseVisualStyleBackColor = false;
@@ -129,9 +131,10 @@
 			this.ex_Jupiter_Europe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Jupiter_Europe.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ex_Jupiter_Europe.ForeColor = System.Drawing.Color.Gainsboro;
-			this.ex_Jupiter_Europe.Location = new System.Drawing.Point(41, 496);
+			this.ex_Jupiter_Europe.Location = new System.Drawing.Point(51, 620);
+			this.ex_Jupiter_Europe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.ex_Jupiter_Europe.Name = "ex_Jupiter_Europe";
-			this.ex_Jupiter_Europe.Size = new System.Drawing.Size(105, 23);
+			this.ex_Jupiter_Europe.Size = new System.Drawing.Size(131, 29);
 			this.ex_Jupiter_Europe.TabIndex = 26;
 			this.ex_Jupiter_Europe.Text = "Jupiter ↔ Europe";
 			this.ex_Jupiter_Europe.UseVisualStyleBackColor = false;
@@ -145,9 +148,10 @@
 			this.ex_Saturne_Titan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Saturne_Titan.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ex_Saturne_Titan.ForeColor = System.Drawing.Color.Gainsboro;
-			this.ex_Saturne_Titan.Location = new System.Drawing.Point(156, 467);
+			this.ex_Saturne_Titan.Location = new System.Drawing.Point(195, 584);
+			this.ex_Saturne_Titan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.ex_Saturne_Titan.Name = "ex_Saturne_Titan";
-			this.ex_Saturne_Titan.Size = new System.Drawing.Size(100, 23);
+			this.ex_Saturne_Titan.Size = new System.Drawing.Size(125, 29);
 			this.ex_Saturne_Titan.TabIndex = 25;
 			this.ex_Saturne_Titan.Text = "Saturne ↔ Titan";
 			this.ex_Saturne_Titan.UseVisualStyleBackColor = false;
@@ -161,9 +165,10 @@
 			this.ex_Terre_Voyager1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ex_Terre_Voyager1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ex_Terre_Voyager1.ForeColor = System.Drawing.Color.Gainsboro;
-			this.ex_Terre_Voyager1.Location = new System.Drawing.Point(41, 467);
+			this.ex_Terre_Voyager1.Location = new System.Drawing.Point(51, 584);
+			this.ex_Terre_Voyager1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.ex_Terre_Voyager1.Name = "ex_Terre_Voyager1";
-			this.ex_Terre_Voyager1.Size = new System.Drawing.Size(110, 23);
+			this.ex_Terre_Voyager1.Size = new System.Drawing.Size(138, 29);
 			this.ex_Terre_Voyager1.TabIndex = 24;
 			this.ex_Terre_Voyager1.Text = "Terre ↔ Voyager 1";
 			this.ex_Terre_Voyager1.UseVisualStyleBackColor = false;
@@ -172,9 +177,10 @@
 			// customExamples
 			// 
 			this.customExamples.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.customExamples.Location = new System.Drawing.Point(38, 444);
+			this.customExamples.Location = new System.Drawing.Point(48, 555);
+			this.customExamples.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.customExamples.Name = "customExamples";
-			this.customExamples.Size = new System.Drawing.Size(206, 15);
+			this.customExamples.Size = new System.Drawing.Size(258, 19);
 			this.customExamples.TabIndex = 23;
 			this.customExamples.Text = "Exemples :";
 			// 
@@ -183,9 +189,10 @@
 			this.separator2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.separator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
-			this.separator2.Location = new System.Drawing.Point(22, 214);
+			this.separator2.Location = new System.Drawing.Point(28, 268);
+			this.separator2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.separator2.Name = "separator2";
-			this.separator2.Size = new System.Drawing.Size(253, 1);
+			this.separator2.Size = new System.Drawing.Size(316, 1);
 			this.separator2.TabIndex = 22;
 			// 
 			// separator1
@@ -193,9 +200,10 @@
 			this.separator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.separator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
-			this.separator1.Location = new System.Drawing.Point(22, 68);
+			this.separator1.Location = new System.Drawing.Point(28, 85);
+			this.separator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.separator1.Name = "separator1";
-			this.separator1.Size = new System.Drawing.Size(253, 1);
+			this.separator1.Size = new System.Drawing.Size(316, 1);
 			this.separator1.TabIndex = 22;
 			// 
 			// separator3
@@ -203,17 +211,19 @@
 			this.separator3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.separator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
-			this.separator3.Location = new System.Drawing.Point(22, 537);
+			this.separator3.Location = new System.Drawing.Point(28, 671);
+			this.separator3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.separator3.Name = "separator3";
-			this.separator3.Size = new System.Drawing.Size(253, 1);
+			this.separator3.Size = new System.Drawing.Size(316, 1);
 			this.separator3.TabIndex = 22;
 			// 
 			// customLabelPointB
 			// 
 			this.customLabelPointB.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.customLabelPointB.Location = new System.Drawing.Point(38, 384);
+			this.customLabelPointB.Location = new System.Drawing.Point(48, 480);
+			this.customLabelPointB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.customLabelPointB.Name = "customLabelPointB";
-			this.customLabelPointB.Size = new System.Drawing.Size(206, 19);
+			this.customLabelPointB.Size = new System.Drawing.Size(258, 24);
 			this.customLabelPointB.TabIndex = 20;
 			this.customLabelPointB.Text = "Nom du point B :";
 			// 
@@ -223,9 +233,10 @@
 			this.customTextBoxPointB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.customTextBoxPointB.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.customTextBoxPointB.ForeColor = System.Drawing.Color.White;
-			this.customTextBoxPointB.Location = new System.Drawing.Point(41, 406);
+			this.customTextBoxPointB.Location = new System.Drawing.Point(51, 508);
+			this.customTextBoxPointB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.customTextBoxPointB.Name = "customTextBoxPointB";
-			this.customTextBoxPointB.Size = new System.Drawing.Size(203, 25);
+			this.customTextBoxPointB.Size = new System.Drawing.Size(253, 29);
 			this.customTextBoxPointB.TabIndex = 19;
 			this.customTextBoxPointB.Text = "Point B";
 			this.customTextBoxPointB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -234,9 +245,10 @@
 			// customLabelPointA
 			// 
 			this.customLabelPointA.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.customLabelPointA.Location = new System.Drawing.Point(38, 324);
+			this.customLabelPointA.Location = new System.Drawing.Point(48, 405);
+			this.customLabelPointA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.customLabelPointA.Name = "customLabelPointA";
-			this.customLabelPointA.Size = new System.Drawing.Size(206, 19);
+			this.customLabelPointA.Size = new System.Drawing.Size(258, 24);
 			this.customLabelPointA.TabIndex = 18;
 			this.customLabelPointA.Text = "Nom du point A :";
 			// 
@@ -246,9 +258,10 @@
 			this.customTextBoxPointA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.customTextBoxPointA.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.customTextBoxPointA.ForeColor = System.Drawing.Color.White;
-			this.customTextBoxPointA.Location = new System.Drawing.Point(41, 346);
+			this.customTextBoxPointA.Location = new System.Drawing.Point(51, 432);
+			this.customTextBoxPointA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.customTextBoxPointA.Name = "customTextBoxPointA";
-			this.customTextBoxPointA.Size = new System.Drawing.Size(203, 25);
+			this.customTextBoxPointA.Size = new System.Drawing.Size(253, 29);
 			this.customTextBoxPointA.TabIndex = 17;
 			this.customTextBoxPointA.Text = "Point A";
 			this.customTextBoxPointA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -257,9 +270,10 @@
 			// presetLabelScale
 			// 
 			this.presetLabelScale.ForeColor = System.Drawing.Color.DarkGray;
-			this.presetLabelScale.Location = new System.Drawing.Point(38, 171);
+			this.presetLabelScale.Location = new System.Drawing.Point(48, 214);
+			this.presetLabelScale.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.presetLabelScale.Name = "presetLabelScale";
-			this.presetLabelScale.Size = new System.Drawing.Size(206, 30);
+			this.presetLabelScale.Size = new System.Drawing.Size(258, 38);
 			this.presetLabelScale.TabIndex = 3;
 			this.presetLabelScale.Text = "Les astres et objets représentés ne sont pas à l\'échelle.";
 			// 
@@ -274,7 +288,8 @@
             0,
             0,
             0});
-			this.customNumeric.Location = new System.Drawing.Point(41, 262);
+			this.customNumeric.Location = new System.Drawing.Point(51, 328);
+			this.customNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.customNumeric.Maximum = new decimal(new int[] {
             -833355776,
             74505,
@@ -286,7 +301,7 @@
             0,
             0});
 			this.customNumeric.Name = "customNumeric";
-			this.customNumeric.Size = new System.Drawing.Size(166, 25);
+			this.customNumeric.Size = new System.Drawing.Size(208, 29);
 			this.customNumeric.TabIndex = 15;
 			this.customNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.customNumeric.ThousandsSeparator = true;
@@ -301,12 +316,12 @@
 			// 
 			this.customLabelKm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.customLabelKm.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.customLabelKm.Location = new System.Drawing.Point(219, 262);
+			this.customLabelKm.Location = new System.Drawing.Point(267, 328);
+			this.customLabelKm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.customLabelKm.Name = "customLabelKm";
-			this.customLabelKm.Size = new System.Drawing.Size(25, 27);
+			this.customLabelKm.Size = new System.Drawing.Size(53, 29);
 			this.customLabelKm.TabIndex = 8;
 			this.customLabelKm.Text = "km";
-			this.customLabelKm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
 			// customRadioButton
 			// 
@@ -314,9 +329,10 @@
 			this.customRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.customRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.customRadioButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.customRadioButton.Location = new System.Drawing.Point(22, 231);
+			this.customRadioButton.Location = new System.Drawing.Point(28, 289);
+			this.customRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.customRadioButton.Name = "customRadioButton";
-			this.customRadioButton.Size = new System.Drawing.Size(222, 24);
+			this.customRadioButton.Size = new System.Drawing.Size(278, 30);
 			this.customRadioButton.TabIndex = 6;
 			this.customRadioButton.Text = "Personnaliser la distance";
 			this.customRadioButton.UseVisualStyleBackColor = true;
@@ -325,18 +341,20 @@
 			// customLabelMinimumDistance
 			// 
 			this.customLabelMinimumDistance.ForeColor = System.Drawing.Color.DarkGray;
-			this.customLabelMinimumDistance.Location = new System.Drawing.Point(38, 295);
+			this.customLabelMinimumDistance.Location = new System.Drawing.Point(48, 369);
+			this.customLabelMinimumDistance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.customLabelMinimumDistance.Name = "customLabelMinimumDistance";
-			this.customLabelMinimumDistance.Size = new System.Drawing.Size(169, 19);
+			this.customLabelMinimumDistance.Size = new System.Drawing.Size(211, 24);
 			this.customLabelMinimumDistance.TabIndex = 5;
 			this.customLabelMinimumDistance.Text = "Distance minimale : 36 000 km";
 			// 
 			// presetLabelDistance
 			// 
 			this.presetLabelDistance.ForeColor = System.Drawing.Color.WhiteSmoke;
-			this.presetLabelDistance.Location = new System.Drawing.Point(38, 146);
+			this.presetLabelDistance.Location = new System.Drawing.Point(48, 182);
+			this.presetLabelDistance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.presetLabelDistance.Name = "presetLabelDistance";
-			this.presetLabelDistance.Size = new System.Drawing.Size(206, 15);
+			this.presetLabelDistance.Size = new System.Drawing.Size(258, 19);
 			this.presetLabelDistance.TabIndex = 4;
 			this.presetLabelDistance.Text = "Distance : 384 400 km";
 			// 
@@ -348,10 +366,11 @@
 			this.presetComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.presetComboBox.ForeColor = System.Drawing.Color.White;
 			this.presetComboBox.FormattingEnabled = true;
-			this.presetComboBox.Location = new System.Drawing.Point(41, 115);
+			this.presetComboBox.Location = new System.Drawing.Point(51, 144);
+			this.presetComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.presetComboBox.MaxDropDownItems = 15;
 			this.presetComboBox.Name = "presetComboBox";
-			this.presetComboBox.Size = new System.Drawing.Size(203, 23);
+			this.presetComboBox.Size = new System.Drawing.Size(253, 28);
 			this.presetComboBox.TabIndex = 3;
 			this.presetComboBox.SelectedIndexChanged += new System.EventHandler(this.PresetComboBox_SelectedIndexChanged);
 			// 
@@ -362,9 +381,10 @@
 			this.presetRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.presetRadioButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.presetRadioButton.ForeColor = System.Drawing.Color.LightSkyBlue;
-			this.presetRadioButton.Location = new System.Drawing.Point(22, 85);
+			this.presetRadioButton.Location = new System.Drawing.Point(28, 106);
+			this.presetRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.presetRadioButton.Name = "presetRadioButton";
-			this.presetRadioButton.Size = new System.Drawing.Size(222, 24);
+			this.presetRadioButton.Size = new System.Drawing.Size(278, 30);
 			this.presetRadioButton.TabIndex = 2;
 			this.presetRadioButton.TabStop = true;
 			this.presetRadioButton.Text = "Choisir un préréglage";
@@ -376,9 +396,10 @@
 			this.labelTitle.Cursor = System.Windows.Forms.Cursors.Default;
 			this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelTitle.ForeColor = System.Drawing.Color.White;
-			this.labelTitle.Location = new System.Drawing.Point(71, 15);
+			this.labelTitle.Location = new System.Drawing.Point(89, 19);
+			this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelTitle.Name = "labelTitle";
-			this.labelTitle.Size = new System.Drawing.Size(132, 40);
+			this.labelTitle.Size = new System.Drawing.Size(165, 50);
 			this.labelTitle.TabIndex = 0;
 			this.labelTitle.Text = "Visulight";
 			this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -392,9 +413,10 @@
 			this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonStart.ForeColor = System.Drawing.Color.DeepSkyBlue;
-			this.buttonStart.Location = new System.Drawing.Point(47, 557);
+			this.buttonStart.Location = new System.Drawing.Point(59, 696);
+			this.buttonStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.buttonStart.Name = "buttonStart";
-			this.buttonStart.Size = new System.Drawing.Size(181, 34);
+			this.buttonStart.Size = new System.Drawing.Size(226, 42);
 			this.buttonStart.TabIndex = 12;
 			this.buttonStart.Text = "Démarrer la simulation";
 			this.buttonStart.UseVisualStyleBackColor = false;
@@ -409,9 +431,10 @@
 			this.buttonStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonStop.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonStop.ForeColor = System.Drawing.Color.LightCoral;
-			this.buttonStop.Location = new System.Drawing.Point(47, 557);
+			this.buttonStop.Location = new System.Drawing.Point(59, 696);
+			this.buttonStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.buttonStop.Name = "buttonStop";
-			this.buttonStop.Size = new System.Drawing.Size(181, 34);
+			this.buttonStop.Size = new System.Drawing.Size(226, 42);
 			this.buttonStop.TabIndex = 16;
 			this.buttonStop.Text = "Arrêter la simulation";
 			this.buttonStop.UseVisualStyleBackColor = false;
@@ -434,9 +457,10 @@
 			this.panelSimulation.Controls.Add(this.buttonShow);
 			this.panelSimulation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panelSimulation.ForeColor = System.Drawing.Color.White;
-			this.panelSimulation.Location = new System.Drawing.Point(275, 0);
+			this.panelSimulation.Location = new System.Drawing.Point(344, 0);
+			this.panelSimulation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.panelSimulation.Name = "panelSimulation";
-			this.panelSimulation.Size = new System.Drawing.Size(609, 611);
+			this.panelSimulation.Size = new System.Drawing.Size(761, 764);
 			this.panelSimulation.TabIndex = 1;
 			// 
 			// lbPointB
@@ -445,9 +469,10 @@
 			this.lbPointB.AutoSize = true;
 			this.lbPointB.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbPointB.ForeColor = System.Drawing.Color.White;
-			this.lbPointB.Location = new System.Drawing.Point(535, 369);
+			this.lbPointB.Location = new System.Drawing.Point(669, 461);
+			this.lbPointB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbPointB.Name = "lbPointB";
-			this.lbPointB.Size = new System.Drawing.Size(48, 17);
+			this.lbPointB.Size = new System.Drawing.Size(64, 23);
 			this.lbPointB.TabIndex = 7;
 			this.lbPointB.Text = "Point B";
 			this.lbPointB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -458,9 +483,10 @@
 			this.lbPointA.AutoSize = true;
 			this.lbPointA.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lbPointA.ForeColor = System.Drawing.Color.White;
-			this.lbPointA.Location = new System.Drawing.Point(36, 369);
+			this.lbPointA.Location = new System.Drawing.Point(45, 461);
+			this.lbPointA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbPointA.Name = "lbPointA";
-			this.lbPointA.Size = new System.Drawing.Size(49, 17);
+			this.lbPointA.Size = new System.Drawing.Size(65, 23);
 			this.lbPointA.TabIndex = 6;
 			this.lbPointA.Text = "Point A";
 			this.lbPointA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -470,9 +496,10 @@
 			this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelTime.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelTime.Location = new System.Drawing.Point(55, 18);
+			this.labelTime.Location = new System.Drawing.Point(69, 22);
+			this.labelTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelTime.Name = "labelTime";
-			this.labelTime.Size = new System.Drawing.Size(498, 25);
+			this.labelTime.Size = new System.Drawing.Size(622, 31);
 			this.labelTime.TabIndex = 4;
 			this.labelTime.Text = "Temps : 00:00:00.000";
 			this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -480,9 +507,10 @@
 			// pbPointA
 			// 
 			this.pbPointA.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.pbPointA.Location = new System.Drawing.Point(40, 285);
+			this.pbPointA.Location = new System.Drawing.Point(50, 356);
+			this.pbPointA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.pbPointA.Name = "pbPointA";
-			this.pbPointA.Size = new System.Drawing.Size(40, 40);
+			this.pbPointA.Size = new System.Drawing.Size(50, 50);
 			this.pbPointA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPointA.TabIndex = 0;
 			this.pbPointA.TabStop = false;
@@ -490,9 +518,10 @@
 			// pbPointB
 			// 
 			this.pbPointB.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.pbPointB.Location = new System.Drawing.Point(549, 295);
+			this.pbPointB.Location = new System.Drawing.Point(686, 369);
+			this.pbPointB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.pbPointB.Name = "pbPointB";
-			this.pbPointB.Size = new System.Drawing.Size(20, 20);
+			this.pbPointB.Size = new System.Drawing.Size(25, 25);
 			this.pbPointB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPointB.TabIndex = 1;
 			this.pbPointB.TabStop = false;
@@ -503,9 +532,10 @@
 			this.panelPhoton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
 			this.panelPhoton.BackgroundImage = global::Visulight.Properties.Resources.LightGoingTowardsPointB;
 			this.panelPhoton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.panelPhoton.Location = new System.Drawing.Point(62, 304);
+			this.panelPhoton.Location = new System.Drawing.Point(78, 380);
+			this.panelPhoton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.panelPhoton.Name = "panelPhoton";
-			this.panelPhoton.Size = new System.Drawing.Size(18, 2);
+			this.panelPhoton.Size = new System.Drawing.Size(22, 2);
 			this.panelPhoton.TabIndex = 2;
 			// 
 			// labelInformation
@@ -514,9 +544,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelInformation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelInformation.ForeColor = System.Drawing.Color.Silver;
-			this.labelInformation.Location = new System.Drawing.Point(44, 49);
+			this.labelInformation.Location = new System.Drawing.Point(55, 61);
+			this.labelInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelInformation.Name = "labelInformation";
-			this.labelInformation.Size = new System.Drawing.Size(520, 40);
+			this.labelInformation.Size = new System.Drawing.Size(650, 50);
 			this.labelInformation.TabIndex = 5;
 			this.labelInformation.Text = "Cliquez sur \'Démarrer la simulation\' pour commencer.";
 			this.labelInformation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -530,8 +561,9 @@
 			this.buttonHide.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonHide.ForeColor = System.Drawing.Color.White;
 			this.buttonHide.Location = new System.Drawing.Point(0, 0);
+			this.buttonHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.buttonHide.Name = "buttonHide";
-			this.buttonHide.Size = new System.Drawing.Size(40, 40);
+			this.buttonHide.Size = new System.Drawing.Size(50, 50);
 			this.buttonHide.TabIndex = 23;
 			this.buttonHide.TabStop = false;
 			this.buttonHide.Text = "←";
@@ -547,8 +579,9 @@
 			this.buttonShow.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.buttonShow.ForeColor = System.Drawing.Color.White;
 			this.buttonShow.Location = new System.Drawing.Point(0, 0);
+			this.buttonShow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.buttonShow.Name = "buttonShow";
-			this.buttonShow.Size = new System.Drawing.Size(40, 40);
+			this.buttonShow.Size = new System.Drawing.Size(50, 50);
 			this.buttonShow.TabIndex = 24;
 			this.buttonShow.TabStop = false;
 			this.buttonShow.Text = "→";
@@ -558,16 +591,17 @@
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
-			this.ClientSize = new System.Drawing.Size(884, 611);
+			this.ClientSize = new System.Drawing.Size(1105, 764);
 			this.Controls.Add(this.panelSimulation);
 			this.Controls.Add(this.panelOptions);
 			this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ForeColor = System.Drawing.Color.White;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(900, 650);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.MinimumSize = new System.Drawing.Size(1120, 801);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Visulight";
